@@ -1,4 +1,4 @@
--- Check total recors
+-- Check total records
 SELECT COUNT(*) FROM swiggy;
 
 --Check for nulls in key columns
@@ -33,7 +33,7 @@ select cuisine,round(avg(cast(rating as float)),2) as avg_rating,count(*) as res
 from swiggy where rating not in('NEW','--')
 GROUP BY  cuisine having count(*)>100 order by avg_rating desc limit 10;
 
---Reataurants with rating above 4.5 and more than 1000 ratings
+--Restaurants with rating above 4.5 and more than 1000 ratings
 select name,city,rating,rating_count,cost from swiggy
 where cast(rating as float)>=4.5 and (CASE when rating_count like '%k+%' THEN  cast(replace(rating_count,'k+','') as INTEGER)*1000
 ELSE
